@@ -18,13 +18,13 @@ John_Doe@ubuntu:~$ git clone https://github.com/Siddharth-Gaywala/GWAS.git .
 '''
 
 ## Arguments
-There are two mandatory arguments:
--g: path to Genotype file, .vcf format
--p: path to Phenotype file, .phen forma
+There are two mandatory arguments:  
+-g: path to Genotype file, .vcf format  
+-p: path to Phenotype file, .phen format  
 
-There are two optional arguments: 
--c: Covariates file, csv/tsv format
--mp: Integer value (>1) to denote number of cores for mp. If no value is set, only one core will be used. 
+There are two optional arguments:  
+-c: Covariates file, csv/tsv format  
+-mp: Integer value (>1) to denote number of cores for mp. If no value is set, only one core will be used.  
 
 ## Example run
 '''
