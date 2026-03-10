@@ -1,4 +1,4 @@
-# fast-GWAS
+# lightweight-GWAS
 *Note that the project is currently a work in progress. The description below is not (yet) accurate. Files of interest at this time are:  
 - GWAS_draft2.ipynb, which reads a genotype, phenotype, and optional covariate file and runs GWAS by linear regression
 - Augment_data.ipynb, which was used to subsample 1000 Genomes data and simulate our phenotypic controls
