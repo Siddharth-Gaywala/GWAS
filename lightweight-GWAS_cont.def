@@ -1,0 +1,28 @@
+Bootstrap: docker
+From: python:3.11.5-slim
+
+%post
+    # Update the package list and install necessary system packages
+    apt-get update && apt-get install -y \
+        git \
+        libgl1-mesa-glx \
+        libglib2.0-0 \
+        build-essential \
+        procps 
+
+    # Install Python packages
+    pip install numpy
+    pip install pandas
+    pip install cyvcf2
+    pip install scipy
+    pip install qqman
+    pip install matplotlib
+    pip install scikit-learn
+
+%environment
+    export LC_ALL=C
+    export LANG=C
+    export PATH=/opt/conda/bin:$PATH
+
+%runscript
+    exec "$@"
