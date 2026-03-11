@@ -1,33 +1,47 @@
 # lightweight-GWAS
-*Note that the project is currently a work in progress. The description below is not (yet) accurate. Files of interest at this time are:  
-- GWAS_draft2.ipynb, which reads a genotype, phenotype, and optional covariate file and runs GWAS by linear regression
-- Augment_data.ipynb, which was used to subsample 1000 Genomes data and simulate our phenotypic controls
 
-
-## TODO
-- Implement MP (accelerate over multiple cores)
-- Convert to python script and support command line arguments 
-- Generate larger subsample
-- Benchmark runtime against PLINK for small vs large datasets
-- Analyze/interpret results of positive vs negative control for our program versus PLINK
-
+## Description
+lightweight-GWAS is a simple tool designed to quickly generate interpretable genome-wide association study (GWAS) results through linear regression.  
 
 ## Installation
-This tool can be installed and run from the command line directly. A singularity definition file and requirements.txt are included, but dependency versioning is not strict. See next section for examples on how to run the script.
+This tool can be installed and run from the command line directly. A singularity definition file and requirements.txt are included, but dependency versioning is not strict. See sections below for examples on how to run the script.
+
+Clone the repository directly 
 ```sh
 John_Doe@ubuntu:~$ git clone https://github.com/Siddharth-Gaywala/GWAS.git .
 ```
 
+Create a new environment and install the required dependencies:
+```sh
+John_Doe@ubuntu:~$ micromamba create -n lightweight-GWAS python=3.11
+John_Doe@ubuntu:~$ micromamba activate lightweight-GWAS
+(lightweight-GWAS) John_Doe@ubuntu:~$ pip install -r /Users/John_Doe/GWAS/requirements.txt
+```
+
+Alternatively, if working in a high performance computing environment, build the singularity container image:
+```sh
+John_Doe@ubuntu:~$ singularity build lightweight-GWAS_cont.sif lightweight-GWAS_cont.def
+```
+
 ## Arguments
-There are two mandatory arguments:  
--g: path to Genotype file, .vcf format  
--p: path to Phenotype file, .phen format  
+There are three mandatory arguments:  
+--vcf: Path to valid VCF file 
+--phenotype: Path to valid phenotype file 
+--out: Prefix for analysis results
 
 There are two optional arguments:  
--c: Covariates file, csv/tsv format  
--mp: Integer value (>1) to denote number of cores for mp. If no value is set, only one core will be used.  
+--covariates: Path to covariates file
+--pca_covariates: Boolean(as a string) to indicate whether PCA should be run on genotypes as an alternative covariates method
 
 ## Example run
 ```sh
-John_Doe@ubuntu:~$ /Users/John_Doe/FGWAS/FGWAS.py -g /mnt/data/genotypes.vcf -p /mnt/data/phenotypes.phen -c /mnt/data/covariates.cov -mp 4
+(lightweight-GWAS) John_Doe@ubuntu:~$ /Users/John_Doe/GWAS/lightweight-GWAS.py --vcf /mnt/data/genotypes.vcf --phenotype /mnt/data/phenotypes.phen --out example --covariates /mnt/data/covariates.cov --pca_covariates False
 ```
+
+## Outputs 
+The tool will save the following results to the directory it was called from with provided prefix:
+- outprefix_manhattan.png
+- outprefix_analysis_results.csv
+
+Examples:
+| ![example manhattan](imgs/example_manhattan.png) | ![example analysis results 2](imgs/example_analysis_results.png) |
