@@ -44,4 +44,5 @@ The tool will save the following results to the directory it was called from wit
 - outprefix_analysis_results.csv
 
 Examples:
-| ![example manhattan](imgs/example_manhattan.png) | ![example analysis results 2](imgs/example_analysis_results.png) |
+
+![example manhattan](imgs/example_manhattan.png) ![example analysis results 2](imgs/example_analysis_results.png)
