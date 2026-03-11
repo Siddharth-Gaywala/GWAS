@@ -24,13 +24,13 @@ John_Doe@ubuntu:~$ singularity build lightweight-GWAS_cont.sif lightweight-GWAS_
 ```
 
 ## Arguments
-There are three mandatory arguments:  
---vcf: Path to valid VCF file 
---phenotype: Path to valid phenotype file 
---out: Prefix for analysis results
+There are three mandatory arguments:   
+--vcf: Path to valid VCF file  
+--phenotype: Path to valid phenotype file   
+--out: Prefix for analysis results  
 
-There are two optional arguments:  
---covariates: Path to covariates file
+There are two optional arguments:    
+--covariates: Path to covariates file  
 --pca_covariates: Boolean(as a string) to indicate whether PCA should be run on genotypes as an alternative covariates method
 
 ## Example run
