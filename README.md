@@ -12,14 +12,14 @@ John_Doe@ubuntu:~$ git clone https://github.com/Siddharth-Gaywala/GWAS.git .
 ```
 
 Create a new environment and install the required dependencies:
-```sh
+```
 John_Doe@ubuntu:~$ micromamba create -n lightweight-GWAS python=3.11
 John_Doe@ubuntu:~$ micromamba activate lightweight-GWAS
 (lightweight-GWAS) John_Doe@ubuntu:~$ pip install -r /Users/John_Doe/GWAS/requirements.txt
 ```
 
 Alternatively, if working in a high performance computing environment, build the singularity container image:
-```sh
+```
 John_Doe@ubuntu:~$ singularity build lightweight-GWAS_cont.sif lightweight-GWAS_cont.def
 ```
 
